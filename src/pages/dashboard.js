@@ -3,13 +3,15 @@ import { useState } from "react";
 const BASE_URL =
   "http://ec2-51-20-136-49.eu-north-1.compute.amazonaws.com:5000";
 
+const LOCAL_URL = "http://localhost:5000";
+
 export default function Dashboard() {
   const [balance, setBalance] = useState(0);
   const [amount, setAmount] = useState("");
 
   const fetchBalance = async () => {
     const token = localStorage.getItem("token");
-    const res = await fetch(`${BASE_URL}/me/accounts`, {
+    const res = await fetch(`${LOCAL_URL}/me/accounts`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ token }),
@@ -20,7 +22,7 @@ export default function Dashboard() {
 
   const depositMoney = async () => {
     const token = localStorage.getItem("token");
-    const res = await fetch(`${BASE_URL}/me/accounts/transactions`, {
+    const res = await fetch(`${LOCAL_URL}/me/accounts/transactions`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ token, amount: parseInt(amount) }),

@@ -4,13 +4,15 @@ import { useRouter } from "next/navigation";
 const BASE_URL =
   "http://ec2-51-20-136-49.eu-north-1.compute.amazonaws.com:5000";
 
+const LOCAL_URL = "http://localhost:5000";
+
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
 
   const handleLogin = async () => {
-    const res = await fetch(`${BASE_URL}/sessions`, {
+    const res = await fetch(`${LOCAL_URL}/sessions`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
