@@ -23,6 +23,8 @@ const config = {
     "\\.(jpg|jpeg|png|gif|webp|svg)$": "<rootDir>/__mocks__/fileMock.js",
     "^@/(.*)$": "<rootDir>/src/$1", // This tells Jest to map '@/...' to 'src/...'
   },
+
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.js"], // Path to your setup file
 };
 
 module.exports = config;
